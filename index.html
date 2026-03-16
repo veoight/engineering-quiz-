@@ -102,7 +102,16 @@
         </div>
     </div>
 
+    <!-- Chart.js 主要 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <!-- Chart.js 备用 CDN（如果主要 CDN 加载失败） -->
+    <script>
+        if (typeof Chart === 'undefined') {
+            var script = document.createElement('script');
+            script.src = 'https://unpkg.com/chart.js@3.9.1/dist/chart.min.js';
+            document.head.appendChild(script);
+        }
+    </script>
     <script src="app.js"></script>
 </body>
 </html>
