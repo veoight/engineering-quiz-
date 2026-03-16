@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工程专业倾向评估问卷</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 欢迎页面 -->
+        <div id="welcome-screen" class="screen active">
+            <div class="container">
+                <div class="header">
+                    <h1>工程专业倾向评估问卷</h1>
+                    <p class="subtitle">探索你的工程专业兴趣方向</p>
+                </div>
+                <div class="intro-card">
+                    <h2>测试说明</h2>
+                    <p>本问卷旨在帮助你了解自己在不同工程专业领域的兴趣倾向。测试包含7个维度，共35道题目。</p>
+                    <div class="dimensions-grid" id="dimensions-grid">
+                        <!-- 动态加载 -->
+                    </div>
+                    <div class="scale-guide">
+                        <h3>评分标准</h3>
+                        <div class="scale-items">
+                            <div class="scale-item"><span class="score">1</span> 非常不同意</div>
+                            <div class="scale-item"><span class="score">2</span> 不同意</div>
+                            <div class="scale-item"><span class="score">3</span> 中立</div>
+                            <div class="scale-item"><span class="score">4</span> 同意</div>
+                            <div class="scale-item"><span class="score">5</span> 非常同意</div>
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="startTest()">开始测试</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 问卷页面 -->
+        <div id="quiz-screen" class="screen">
+            <div class="container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="current-part">第一部分</span>
+                    <span id="progress-indicator">1 / 35</span>
+                </div>
+                <div class="question-card">
+                    <div class="part-title" id="part-title">维度名称</div>
+                    <div class="question-text" id="question-text">题目内容</div>
+                    <div class="options-container">
+                        <button class="option-btn" onclick="selectOption(1)">
+                            <span class="option-score">1</span>
+                            <span class="option-label">非常不同意</span>
+                        </button>
+                        <button class="option-btn" onclick="selectOption(2)">
+                            <span class="option-score">2</span>
+                            <span class="option-label">不同意</span>
+                        </button>
+                        <button class="option-btn" onclick="selectOption(3)">
+                            <span class="option-score">3</span>
+                            <span class="option-label">中立</span>
+                        </button>
+                        <button class="option-btn" onclick="selectOption(4)">
+                            <span class="option-score">4</span>
+                            <span class="option-label">同意</span>
+                        </button>
+                        <button class="option-btn" onclick="selectOption(5)">
+                            <span class="option-score">5</span>
+                            <span class="option-label">非常同意</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 结果页面 -->
+        <div id="result-screen" class="screen">
+            <div class="container">
+                <div class="result-header">
+                    <h1>测试结果</h1>
+                    <p class="result-subtitle">你的工程专业倾向分析</p>
+                </div>
+                <div class="result-content">
+                    <div class="radar-chart-container">
+                        <canvas id="radar-chart"></canvas>
+                    </div>
+                    <div class="results-list" id="results-list">
+                        <!-- 动态加载 -->
+                    </div>
+                    <div class="recommendation-card">
+                        <h2>推荐专业方向</h2>
+                        <div id="top-recommendations"></div>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <button class="btn-secondary" onclick="restartTest()">重新测试</button>
+                    <button class="btn-primary" onclick="downloadResult()">下载结果</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
